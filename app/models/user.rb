@@ -5,20 +5,13 @@ class User < ApplicationRecord
   has_secure_password
 
   def add_remember_token
-    self.remember_token = digest(new_token)
+    self.remember_token = User.new_token
   end
   
   # Generate a new url safe token
-  def new_token
-    SecureRandom.urlsafe_base64
+  def self.new_token
+    Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64)
   end
   
-  # Hash token
-  def digest (token)
-    Digest::SHA1.hexdigest (token)
-  end
-
-
-
 
 end
