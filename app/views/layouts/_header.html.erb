@@ -2,7 +2,15 @@
   <nav class="navbar navbar-dark bg-dark justify-content-between">
     <%= link_to 'Members Only', '#', class:'navbar-brand pl-3' %>
     <div class="navbar navbar-dark">
+      <% if signed_in? %>
       <%= link_to 'Log Out', logout_path, class: 'nav-item nav-link' %>
+      <%= link_to 'New post', new_post_path, class: 'nav-item nav-link' %>
+    <% else %>
+      <%= link_to 'Log In', login_path, class: 'nav-item nav-link' %>
+    <% end %>
+
+      <%= link_to 'All Posts', posts_path, class: 'nav-item nav-link' %>
+
     </div>
   </nav>
 </header>

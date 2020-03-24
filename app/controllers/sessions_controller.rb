@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
      sign_in user
      remember user
+     redirect_to posts_path
 
     end
   end

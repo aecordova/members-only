@@ -1,0 +1,17 @@
+<% provide(:title, ': All posts') %>
+
+<section class="container py-3 align-content-center">
+  <h2 class="m-auto col-md-6 py-3 text-center">All Posts</h2>
+<div class="col-md-6 m-auto p-0">
+  <% @posts.each do |p| %>
+    <div class="d-flex justify-content-between bg-light">
+      <span class="post-title font-weight-bold">
+        <%= p.title %></span>
+      <small class="text-secondary">
+        <%=if signed_in? then p.author.name else "[user]" end %> - <%= time_ago_in_words(p.created_at) %> ago 
+      </small>
+   </div>
+   <div class="px-2 mb-2">-- <%= p.body %></div>
+  <% end %>
+</div>
+</section>
